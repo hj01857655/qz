@@ -25,9 +25,9 @@ def curriculum():
             cookies=isvaild().cookies)
         data=res.content
         classes=[['' for j in range(14)] for i in range(7)]
-        for i, f in enumerate(re.finditer(r'.*kbcontent1.*?>(.+?)<', data)):
+        for i, f in enumerate(re.finditer(r'.*kbcontent1.*?>(.+?)<', data.decode('utf-8'))):
             day  = i % 7
-            time = i / 7
+            time = int(i / 7)
             classes[day][time] = f.group(1)
         for day in ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日']:
             print (day.center(27)),
