@@ -1,5 +1,5 @@
 import re, requests
-from login import isvaild
+from login import isValid
 import pandas as pd
 
 def achievement():
@@ -8,7 +8,7 @@ def achievement():
         arr = []
         cj = requests.post('http://oa.csmu.edu.cn:8099/jsxsd/kscj/cjcx_list',
                            data=data,
-                           cookies=isvaild().cookies).text
+                           cookies=isValid().cookies).text
         a, _ = re.subn('\r', '', cj)
         a, _ = re.subn('\n', '', a)
         a, _ = re.subn('\t', '', a)

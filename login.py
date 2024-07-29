@@ -57,7 +57,7 @@ def load_cookies():
         cookies = json.load(f)
     return cookies
 
-def isvaild():
+def isValid():
     url = 'http://oa.csmu.edu.cn:8099/jsxsd/framework/xsMain.jsp'
     res = session.get(url, cookies=load_cookies())
     # print(res.status_code)

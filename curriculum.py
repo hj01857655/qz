@@ -1,6 +1,6 @@
 import re, json
 import requests
-from login import isvaild
+from login import isValid
 from bs4 import BeautifulSoup
 
 
@@ -8,7 +8,7 @@ def curriculum():
     try:
         res = requests.get(
             'http://oa.csmu.edu.cn:8099/jsxsd/xskb/xskb_list.do',
-            cookies=isvaild().cookies).text
+            cookies=isValid().cookies).text
         # print(res)
         # a, _ = re.subn('\r', '', res)
         # a, _ = re.subn('\n', '', a)
