@@ -24,8 +24,7 @@ def curriculum():
             'http://oa.csmu.edu.cn:8099/jsxsd/xskb/xskb_list.do',
             cookies=isvaild().cookies)
         data=res.content
-        classes=[['     ' for j in range(14)] for i in range(7)]
-        print(classes)
+        classes=[['' for j in range(14)] for i in range(7)]
         for i, f in enumerate(re.finditer(r'.*kbcontent1.*?>(.+?)<', data)):
             day  = i % 7
             time = i / 7
