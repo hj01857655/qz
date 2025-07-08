@@ -1,6 +1,12 @@
 import ddddocr
 import time
-import requests  # 确保requests库已导入
+import requests
+import os
+import warnings
+
+# 抑制ONNX Runtime警告
+os.environ['ORT_LOGGING_LEVEL'] = '3'  # 只显示错误级别的日志
+warnings.filterwarnings('ignore', category=UserWarning, module='onnxruntime')
 
 # PIL兼容性补丁
 try:
@@ -10,6 +16,27 @@ try:
         Image.ANTIALIAS = Image.LANCZOS
 except ImportError:
     pass
+
+
+def clean_old_captcha_files(captcha_dir, max_age_hours=24):
+    """
+    清理旧的验证码文件
+
+    Args:
+        captcha_dir: 验证码目录
+        max_age_hours: 文件最大保留时间（小时）
+    """
+    try:
+        current_time = time.time()
+        max_age_seconds = max_age_hours * 3600
+
+        for file_path in captcha_dir.glob("captcha_*.png"):
+            file_age = current_time - file_path.stat().st_mtime
+            if file_age > max_age_seconds:
+                file_path.unlink()
+                print(f"🗑️ 清理旧验证码文件: {file_path.name}")
+    except Exception as e:
+        print(f"⚠️ 清理验证码文件时出错: {e}")
 
 
 def code_ocr(username, session, max_retries=3):
@@ -27,16 +54,19 @@ def code_ocr(username, session, max_retries=3):
     import os
     from pathlib import Path
 
-    # 确保data目录存在
-    data_dir = Path(__file__).parent.parent / "data"
-    data_dir.mkdir(exist_ok=True)
+    # 确保验证码目录存在
+    captcha_dir = Path(__file__).parent.parent / "data" / "captcha"
+    captcha_dir.mkdir(parents=True, exist_ok=True)
+
+    # 清理旧的验证码文件
+    clean_old_captcha_files(captcha_dir)
 
     for attempt in range(max_retries):
         try:
             print(f"🔍 正在获取验证码... (尝试 {attempt + 1}/{max_retries})")
 
             # 生成验证码图片文件名
-            image_path = data_dir / f'CSMU_code_{username}_{int(time.time())}.png'
+            image_path = captcha_dir / f'captcha_{username}_{int(time.time())}.png'
 
             # 获取验证码图片
             response = session.get(
@@ -67,7 +97,7 @@ def code_ocr(username, session, max_retries=3):
 
                         # 验证码基本格式检查
                         if code and len(code) >= 4:
-                            print(f"🎯 识别到验证码: {code}")
+                            print(f"🎯 验证码识别成功: {code}")
 
                             # 清理临时文件
                             try:
@@ -77,7 +107,7 @@ def code_ocr(username, session, max_retries=3):
 
                             return code
                         else:
-                            print(f"⚠️ 验证码格式异常: {code}")
+                            print(f"⚠️ 验证码格式异常: {code} (长度: {len(code) if code else 0})")
 
                     except Exception as ocr_error:
                         print(f"❌ OCR识别失败: {ocr_error}")

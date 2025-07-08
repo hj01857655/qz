@@ -79,8 +79,10 @@ config/config.json
 !.env.example
 
 # 验证码图片
+data/captcha/
 CSMU_code*.png
 *_code*.png
+captcha_*.png
 
 # 个人信息文件
 name.json
