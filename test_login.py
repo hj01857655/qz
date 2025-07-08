@@ -94,9 +94,8 @@ def main():
     
     # 显示凭据获取方式
     print("📋 凭据获取方式:")
-    print("1. 环境变量 (EDU_USERNAME, EDU_PASSWORD, EDU_SCHOOL)")
-    print("2. 配置文件 (config/config.json)")
-    print("3. 交互式输入")
+    print("环境变量 (EDU_USERNAME, EDU_PASSWORD, EDU_SCHOOL)")
+    print("或在 .env 文件中配置")
     print()
     
     input("按回车键开始测试...")
