@@ -1,19 +1,55 @@
+import os
+import json
+import sys
 from hashlib import md5
+from pathlib import Path
 from sqlalchemy import create_engine, Column, String, Text, Integer
 from sqlalchemy.orm import sessionmaker, declarative_base
 import time
-# 数据库配置
-HOST = 'localhost'
-PORT = '3306'
-DATABASE = 'weschool'
-USERNAME = 'root'
-PASSWORD = 'root'
 
-# 本地数据库
-DB_URI = "mysql+pymysql://{username}:{password}@{host}:{port}/{db}?charset=utf8".format(
-    username=USERNAME, password=PASSWORD, host=HOST, port=PORT, db=DATABASE)
-engine = create_engine(DB_URI, echo=False)
-DBsession = sessionmaker(bind=engine)
+# 添加项目根目录到Python路径
+project_root = Path(__file__).parent.parent
+sys.path.insert(0, str(project_root))
+
+def load_config():
+    """加载数据库配置"""
+    config_path = project_root / "config" / "config.json"
+    if config_path.exists():
+        with open(config_path, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    else:
+        # 使用环境变量作为备选
+        return {
+            "mysql": {
+                "host": os.getenv("DB_HOST", "localhost"),
+                "port": int(os.getenv("DB_PORT", "3306")),
+                "user": os.getenv("DB_USER", "root"),
+                "password": os.getenv("DB_PASSWORD", ""),
+                "database": os.getenv("DB_NAME", "educational_system")
+            }
+        }
+
+def get_database_uri():
+    """获取数据库连接URI"""
+    config = load_config()
+    mysql_config = config["mysql"]
+
+    if not mysql_config["password"]:
+        raise ValueError("数据库密码未配置！请设置环境变量 DB_PASSWORD 或配置 config/config.json")
+
+    return "mysql+pymysql://{user}:{password}@{host}:{port}/{database}?charset=utf8".format(
+        **mysql_config
+    )
+
+# 创建数据库引擎和会话
+try:
+    engine = create_engine(get_database_uri(), echo=False)
+    DBsession = sessionmaker(bind=engine)
+except Exception as e:
+    print(f"数据库连接配置错误: {e}")
+    print("请检查配置文件或环境变量设置")
+    engine = None
+    DBsession = None
 
 Base = declarative_base()
 
