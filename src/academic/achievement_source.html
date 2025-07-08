@@ -1,0 +1,3850 @@
+
+  
+  
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<head id="headerid1">
+	<base target='_self'>
+	<title>学生个人考试成绩</title>	
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">
+	<meta http-equiv="keywords" content="湖南强智科技教务系统">
+	<meta http-equiv="description" content="湖南强智科技教务系统">
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+<script type="text/javascript" src="/jsxsd/js/jquery-min.js" language="javascript" ></script>
+<script type="text/javascript" src="/jsxsd/js/common.js" language="javascript" ></script>
+<script type="text/javascript" src="/jsxsd/js/iepngfix_tilebg.js" language="javascript" ></script>
+<link href="/jsxsd/framework/images/common.css" rel="stylesheet" type="text/css" />
+<link href="/jsxsd/framework/images/blue.css" rel="stylesheet" type="text/css" id="link_theme" />
+<link href="/jsxsd/framework/images/workstation.css" rel="stylesheet" type="text/css" /> 
+</head>
+<iframe id="notSession" name="notSession" style="display: none;" src=""></iframe>
+<script type="text/javascript">
+jQuery(document).ready(function(){
+	window.setInterval(function(){
+		 document.getElementById("notSession").src = "/jsxsd/framework/blankPage.jsp";
+	 }, 1000 * 60 * 10);
+});
+</script>
+<body>
+<!-- 
+
+
+
+
+
+
+
+<script>
+function opengld(){
+	if("1"!='2'){
+		alert("非教师不能进行切换");
+		return;
+	}
+	var height = $(window).height();
+	var width = $(window).width();
+	if(parseInt(height)<750){
+		document.getElementById("view").value = "1";
+	}else{
+		document.getElementById("view").value = "0";
+	}
+	//取得userid
+	var userid = '12023050204013';
+	document.getElementById("useraccount").value = userid;
+	$.ajax({
+				cache: true,
+				type: "POST",
+				url:"/jsxsd/system/loginupdtoGld.do",
+				dataType: "json",
+				success: function(data) {
+					if(data.val=="1"){
+						document.getElementById("upd").value = data.upd;
+						document.getElementById("time").value = data.time;
+						document.getElementById("loginForm1").submit();
+
+					}else{
+						alert("异常导致不能进行切换");
+						return;
+					}
+				}
+			});
+}
+function LogoutGLD(){
+	var userid = '12023050204013';
+	document.getElementById("loginForm1").action = "http://oa.csmu.edu.cn:8099/Logon.do?method=logoutFromJsxsd";
+	document.getElementById("useraccount").value = userid;
+	document.getElementById("loginForm1").submit();
+}	
+function Logout(url){
+	//alert("退出系统");
+	window.location.href = getRandomUrl(url + "/xk/LoginToXk?method=exit");
+}
+</script>	
+<div class="Nsb_pw">
+  <div class="Nsb_top">
+  	<form action = "http://oa.csmu.edu.cn:8099/Logon.do?method=logonFromJsxsd"  method="post" id="loginForm1" name="loginForm1">
+		<input type = "hidden" id="view" name="view" />
+		<input type = "hidden" id="useraccount" name="useraccount" />
+		<input type = "hidden" id="ticket" name="ticket" />
+		<input type="hidden" id="upd" name="upd" value="" />
+		<input type="hidden" id="time" name="time" value="" />
+	</form>
+    <div class="Nsb_top_logo"><table border="0" cellpadding="0" cellspacing="0"><tr><td height="75" valign="middle"><img style="display:;" id="imgLogo" src="/jsxsd/framework/images/index_logo.gif" /></td></tr></table></div>
+    <div class="Nsb_top_menu">        
+        <div id="Top1_divLoginName" class="Nsb_top_menu_nc" style="color: #000000;">付佳鹭(12023050204013)</div>
+       
+        <ul>
+            <li><a id="TopUserSetting" info="个人设置" href="#" class="Nsb_top_menu_id"><img src="/jsxsd/framework/images/Nsb_top_p1.jpg" id="Top1_imgTopSmallUserPhoto" /></a></li>
+            <span></span>
+                          
+            
+            <li><a id="TopTheme" info="切换主题" href="#" class="Nsb_top_menu_style" onclick="changeDisplay('divTopTheme')"></a></li>
+            <span id="Top1_LBackManageSpliter"></span>
+            <span id="Top1_LExitSpliter"></span>
+            <li id="Top1_LBackManage">
+            	<a info="个人设置" href="/jsxsd/grsz/grsz_xggrxx.do?Ves632DSdyV=NEW_XSD_WDZM" class="Nsb_top_menu_options"></a>
+            </li>
+             
+        	 	<li id="Top1_LExit"><a info="退出" href="javascript:Logout('/jsxsd');"   class="Nsb_top_menu_exit"></a></li>
+        	 
+            
+            
+        </ul>            
+     </div>   
+     <div id="divTopTheme" group="topDiv" style="display:none;z-index:10000">      
+        <div class="Nsb_top_c Nsb_top_c3">
+          <ul>
+            <li id="theme_blue" theme="blue" index="1" class="Nsb_top_c3_11" onclick="javascript:changeTheme('/jsxsd','blue',this);"></li>
+            <li id="theme_green" theme="green" index="2" class="Nsb_top_c3_2"  onclick="javascript:changeTheme('/jsxsd','green',this);"></li>
+            <li id="theme_orange" theme="orange" index="3" class="Nsb_top_c3_3" onclick="javascript:changeTheme('/jsxsd','orange',this);"></li>
+            <li id="theme_red" theme="red" index="4" class="Nsb_top_c3_4"  onclick="javascript:changeTheme('/jsxsd','red',this);"></li>
+            <li id="theme_purple" theme="purple" index="5" class="Nsb_top_c3_5" onclick="javascript:changeTheme('/jsxsd','purple',this);"></li>
+            <li id="theme_gray" theme="gray" index="6" class="Nsb_top_c3_6"  onclick="javascript:changeTheme('/jsxsd','gray',this);"></li>
+          </ul>
+        </div>
+     </div>
+   </div>
+</div>
+<div class="Nsb_menu_pw">
+  <div class="Nsb_pw">
+    <div id="divFirstMenuClass" class="Nsb_menu menu_cn">
+      <ul>         
+         <li class="Nsb_menu_li_now" title="首页">
+         	<a class="Nsb_menu_li_h" id="homepage" href="/jsxsd/framework/xsMain.jsp"><span></span></a>
+         </li>
+         
+         	<li title="我的桌面">
+         		<a id="calender_user_schedule" href="/jsxsd/jxzl/jxzl_query?Ves632DSdyV=NEW_XSD_WDZM">我的桌面</a>
+         	</li>
+         
+         	<li title="学籍成绩">
+         		<a id="calender_user_schedule" href="/jsxsd/xsxj/xjxxgl.do?Ves632DSdyV=NEW_XSD_XJCJ">学籍成绩</a>
+         	</li>
+         
+         	<li title="培养管理">
+         		<a id="calender_user_schedule" href="/jsxsd/pyfa/topyfamx?Ves632DSdyV=NEW_XSD_PYGL">培养管理</a>
+         	</li>
+         
+         	<li title="考试报名">
+         		<a id="calender_user_schedule" href="/jsxsd/xsks/xsksap_query?Ves632DSdyV=NEW_XSD_KSBM">考试报名</a>
+         	</li>
+         
+         	<li title="教学评价">
+         		<a id="calender_user_schedule" href="/jsxsd/xspj/xspj_find.do?Ves632DSdyV=NEW_XSD_JXPJ">教学评价</a>
+         	</li>
+         
+         	<li title="教育科研">
+         		<a id="calender_user_schedule" href="/jsxsd/xsjyky/queryXssq.do?Ves632DSdyV=NEW_XSD_JYKY">教育科研</a>
+         	</li>
+         
+      </ul>
+    </div>
+  </div>
+</div>-->
+<div class="Nsb_pw">   
+	<br/>
+	<!-- <div class="Nsb_r_title"><a href="/jsxsd/framework/main.jsp"">首页</a> » 考试成绩 » 课程成绩查询 » 查询列表</div>
+	<input type="button" id="btn_back" class="button" value="返 回" onclick="window.location.href='/jsxsd/kscj/cjcx_query';"/> -->
+	
+	<br />
+	
+	查询条件：全部 
+
+
+
+
+
+				
+	<table id="dataList" width="100%" border="0" cellspacing="0" cellpadding="0" class="Nsb_r_list Nsb_table">
+		<tr>
+			<th class="Nsb_r_list_thb" style="width: 35px;">序号</th>
+			<th class="Nsb_r_list_thb" style="width: 140px;">开课学期</th>
+			<th class="Nsb_r_list_thb" style="width: 110px;">课程编号</th>
+			<th class="Nsb_r_list_thb" style="width: 140px;">课程名称</th>
+			<!-- 由于成绩项目基本不会改动，未做对应变化。 -->
+			<th class="Nsb_r_list_thb" style="width: 50px;">总成绩</th>
+			<th class="Nsb_r_list_thb" style="width: 50px;">技能成绩</th>
+			<th class="Nsb_r_list_thb" style="width: 50px;">平时成绩</th>
+			<th class="Nsb_r_list_thb" style="width: 50px;">卷面成绩</th>
+			<th class="Nsb_r_list_thb" style="width: 50px;">成绩标志</th>
+			<th class="Nsb_r_list_thb" style="width: 50px;">学分</th>
+			<th class="Nsb_r_list_thb" style="width: 60px;">考试性质</th>
+			<th class="Nsb_r_list_thb" style="width: 50px;">总学时</th>
+			<th class="Nsb_r_list_thb" style="width: 50px;">绩点</th>
+			<th class="Nsb_r_list_thb" style="width: 60px;">考核方式</th>
+			<th class="Nsb_r_list_thb" style="width: 60px;">课程属性</th>
+			<th class="Nsb_r_list_thb" style="width: 60px;">课程性质</th>
+		</tr>
+		
+		<tr>
+			<td>1</td>
+			<td>2023-2024-1</td>
+			<td align="left">01022030</td>
+			<td align="left">食品营养与食品安全</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=&zcj=通过',700,500)">通过</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>1</td>
+			<td>正常考试</td>
+			<td>10</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td></td>
+				     
+				 
+			
+			
+			<td>考试</td>
+			<td>任选</td>
+			<td>公共选修课</td>
+		</tr>
+		
+		<tr>
+			<td>2</td>
+			<td>2023-2024-1</td>
+			<td align="left">01022350</td>
+			<td align="left">创业人生</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=&zcj=通过',700,500)">通过</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>1</td>
+			<td>正常考试</td>
+			<td>17</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td></td>
+				     
+				 
+			
+			
+			<td>考试</td>
+			<td>任选</td>
+			<td>公共选修课</td>
+		</tr>
+		
+		<tr>
+			<td>3</td>
+			<td>2023-2024-1</td>
+			<td align="left">01028820</td>
+			<td align="left">剑指CET-4：大学生英语能力基础</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=&zcj=通过',700,500)">通过</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>3</td>
+			<td>正常考试</td>
+			<td>32</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td></td>
+				     
+				 
+			
+			
+			<td>考试</td>
+			<td>任选</td>
+			<td>公共选修课</td>
+		</tr>
+		
+		<tr>
+			<td>4</td>
+			<td>2023-2024-1</td>
+			<td align="left">01031200</td>
+			<td align="left">创新创业基础</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=&zcj=通过',700,500)">通过</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>2</td>
+			<td>正常考试</td>
+			<td>21</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td></td>
+				     
+				 
+			
+			
+			<td>考试</td>
+			<td>任选</td>
+			<td>公共选修课</td>
+		</tr>
+		
+		<tr>
+			<td>5</td>
+			<td>2023-2024-1</td>
+			<td align="left">20204020</td>
+			<td align="left">护士人文修养</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=202320241008877&zcj=65',700,500)">65</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					89
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" color:red;">
+			48.5
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>2</td>
+			<td>正常考试</td>
+			<td>32</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td>1.5</td>
+				     
+				 
+			
+			
+			<td>考试</td>
+			<td>必修</td>
+			<td>专业课</td>
+		</tr>
+		
+		<tr>
+			<td>6</td>
+			<td>2023-2024-1</td>
+			<td align="left">20301030</td>
+			<td align="left">系统解剖学</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=202320241008953&zcj=85',700,500)">85</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					99.7
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			79
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>4.5</td>
+			<td>正常考试</td>
+			<td>72</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td>3.5</td>
+				     
+				 
+			
+			
+			<td>考试</td>
+			<td>必修</td>
+			<td>公共课</td>
+		</tr>
+		
+		<tr>
+			<td>7</td>
+			<td>2023-2024-1</td>
+			<td align="left">20302030</td>
+			<td align="left">组织学与胚胎学</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=202320241008885&zcj=81',700,500)">81</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					99
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			73.5
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>2</td>
+			<td>正常考试</td>
+			<td>32</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td>3.1</td>
+				     
+				 
+			
+			
+			<td>考试</td>
+			<td>必修</td>
+			<td>公共课</td>
+		</tr>
+		
+		<tr>
+			<td>8</td>
+			<td>2023-2024-1</td>
+			<td align="left">20702030</td>
+			<td align="left">医学统计学</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=202320241008933&zcj=83',700,500)">83</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					98
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			76
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>1.5</td>
+			<td>正常考试</td>
+			<td>28</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td>3.3</td>
+				     
+				 
+			
+			
+			<td>考试</td>
+			<td>必修</td>
+			<td>公共课</td>
+		</tr>
+		
+		<tr>
+			<td>9</td>
+			<td>2023-2024-1</td>
+			<td align="left">20706011</td>
+			<td align="left">大学生心理健康教育</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=202320241008870&zcj=75',700,500)">75</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					72
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			76
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>1</td>
+			<td>正常考试</td>
+			<td>16</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td>2.5</td>
+				     
+				 
+			
+			
+			<td>考查</td>
+			<td>必修</td>
+			<td>公共课</td>
+		</tr>
+		
+		<tr>
+			<td>10</td>
+			<td>2023-2024-1</td>
+			<td align="left">21001010</td>
+			<td align="left">大学英语（一）</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=202320241010107&zcj=65',700,500)">65</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					84
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" color:red;">
+			57
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>2.5</td>
+			<td>正常考试</td>
+			<td>42</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td>1.5</td>
+				     
+				 
+			
+			
+			<td>考试</td>
+			<td>必修</td>
+			<td>公共课</td>
+		</tr>
+		
+		<tr>
+			<td>11</td>
+			<td>2023-2024-1</td>
+			<td align="left">21301011</td>
+			<td align="left">大学体育（一）</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=202320241010163&zcj=88',700,500)">88</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				85
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					95
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>1</td>
+			<td>正常考试</td>
+			<td>28</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td>3.8</td>
+				     
+				 
+			
+			
+			<td>考试</td>
+			<td>必修</td>
+			<td>公共课</td>
+		</tr>
+		
+		<tr>
+			<td>12</td>
+			<td>2023-2024-1</td>
+			<td align="left">B21201030</td>
+			<td align="left">大学计算机基础</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=202320241008945&zcj=89',700,500)">89</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					71.25
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			96
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>3.5</td>
+			<td>正常考试</td>
+			<td>56</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td>3.9</td>
+				     
+				 
+			
+			
+			<td>考试</td>
+			<td>必修</td>
+			<td>公共课</td>
+		</tr>
+		
+		<tr>
+			<td>13</td>
+			<td>2023-2024-1</td>
+			<td align="left">B21603020</td>
+			<td align="left">思想道德与法治</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=202320241010221&zcj=84',700,500)">84</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				90
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					93.33
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			76
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>3</td>
+			<td>正常考试</td>
+			<td>48</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td>3.4</td>
+				     
+				 
+			
+			
+			<td>考试</td>
+			<td>必修</td>
+			<td>公共课</td>
+		</tr>
+		
+		<tr>
+			<td>14</td>
+			<td>2023-2024-2</td>
+			<td align="left">01021960</td>
+			<td align="left">美术鉴赏</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=&zcj=通过',700,500)">通过</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>3</td>
+			<td>正常考试</td>
+			<td>39</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td></td>
+				     
+				 
+			
+			
+			<td>考试</td>
+			<td>公选</td>
+			<td>公共选修课</td>
+		</tr>
+		
+		<tr>
+			<td>15</td>
+			<td>2023-2024-2</td>
+			<td align="left">01021970</td>
+			<td align="left">戏曲鉴赏</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=&zcj=通过',700,500)">通过</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>3</td>
+			<td>正常考试</td>
+			<td>33</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td></td>
+				     
+				 
+			
+			
+			<td>考试</td>
+			<td>公选</td>
+			<td>公共选修课</td>
+		</tr>
+		
+		<tr>
+			<td>16</td>
+			<td>2023-2024-2</td>
+			<td align="left">01028300</td>
+			<td align="left">聆听心声：音乐审美心理分析</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=&zcj=通过',700,500)">通过</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>3</td>
+			<td>正常考试</td>
+			<td>36</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td></td>
+				     
+				 
+			
+			
+			<td>考试</td>
+			<td>公选</td>
+			<td>公共选修课</td>
+		</tr>
+		
+		<tr>
+			<td>17</td>
+			<td>2023-2024-2</td>
+			<td align="left">01028510</td>
+			<td align="left">花道—插花技艺养成</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=&zcj=通过',700,500)">通过</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>1</td>
+			<td>正常考试</td>
+			<td>12</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td></td>
+				     
+				 
+			
+			
+			<td>考试</td>
+			<td>公选</td>
+			<td>公共选修课</td>
+		</tr>
+		
+		<tr>
+			<td>18</td>
+			<td>2023-2024-2</td>
+			<td align="left">20201020</td>
+			<td align="left">护理学导论</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=202320242001664&zcj=84',700,500)">84</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					91.17
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			80
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>1</td>
+			<td>正常考试</td>
+			<td>16</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td>3.4</td>
+				     
+				 
+			
+			
+			<td>考查</td>
+			<td>必修</td>
+			<td>专业课</td>
+		</tr>
+		
+		<tr>
+			<td>19</td>
+			<td>2023-2024-2</td>
+			<td align="left">20201061</td>
+			<td align="left">护理美学</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=202320242008150&zcj=87',700,500)">87</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					100
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			82
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>1</td>
+			<td>正常考试</td>
+			<td>16</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td>3.7</td>
+				     
+				 
+			
+			
+			<td>考查</td>
+			<td>选修</td>
+			<td>专业选修课</td>
+		</tr>
+		
+		<tr>
+			<td>20</td>
+			<td>2023-2024-2</td>
+			<td align="left">20204050</td>
+			<td align="left">护理伦理学</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=202320242001720&zcj=67',700,500)">67</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					83
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" color:red;">
+			56
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>1.5</td>
+			<td>正常考试</td>
+			<td>24</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td>1.7</td>
+				     
+				 
+			
+			
+			<td>考试</td>
+			<td>必修</td>
+			<td>专业课</td>
+		</tr>
+		
+		<tr>
+			<td>21</td>
+			<td>2023-2024-2</td>
+			<td align="left">20204120</td>
+			<td align="left">护理研究（含医学文献检索）</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=202320242001736&zcj=70',700,500)">70</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					85
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			60
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>2.5</td>
+			<td>正常考试</td>
+			<td>40</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td>2</td>
+				     
+				 
+			
+			
+			<td>考试</td>
+			<td>必修</td>
+			<td>专业课</td>
+		</tr>
+		
+		<tr>
+			<td>22</td>
+			<td>2023-2024-2</td>
+			<td align="left">20303120</td>
+			<td align="left">生理学</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=202320242001744&zcj=65',700,500)">65</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					96.51
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" color:red;">
+			52
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>3.5</td>
+			<td>正常考试</td>
+			<td>56</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td>1.5</td>
+				     
+				 
+			
+			
+			<td>考试</td>
+			<td>必修</td>
+			<td>专业基础课</td>
+		</tr>
+		
+		<tr>
+			<td>23</td>
+			<td>2023-2024-2</td>
+			<td align="left">20304050</td>
+			<td align="left">生物化学</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=202320242001704&zcj=83',700,500)">83</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					95.09
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			78
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>3</td>
+			<td>正常考试</td>
+			<td>48</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td>3.3</td>
+				     
+				 
+			
+			
+			<td>考试</td>
+			<td>必修</td>
+			<td>专业基础课</td>
+		</tr>
+		
+		<tr>
+			<td>24</td>
+			<td>2023-2024-2</td>
+			<td align="left">20305040</td>
+			<td align="left">病理学</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=202320242007916&zcj=65',700,500)">65</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					90
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" color:red;">
+			54
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>2.5</td>
+			<td>正常考试</td>
+			<td>40</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td>1.5</td>
+				     
+				 
+			
+			
+			<td>考试</td>
+			<td>必修</td>
+			<td>公共课</td>
+		</tr>
+		
+		<tr>
+			<td>25</td>
+			<td>2023-2024-2</td>
+			<td align="left">20308020</td>
+			<td align="left">医学免疫学</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=202320242001672&zcj=76',700,500)">76</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					94.82
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			68
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>2</td>
+			<td>正常考试</td>
+			<td>32</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td>2.6</td>
+				     
+				 
+			
+			
+			<td>考试</td>
+			<td>必修</td>
+			<td>公共课</td>
+		</tr>
+		
+		<tr>
+			<td>26</td>
+			<td>2023-2024-2</td>
+			<td align="left">21001020</td>
+			<td align="left">大学英语（二）</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=202320242006141&zcj=63',700,500)">63</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					84
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" color:red;">
+			54
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>4.5</td>
+			<td>正常考试</td>
+			<td>72</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td>1.3</td>
+				     
+				 
+			
+			
+			<td>考试</td>
+			<td>必修</td>
+			<td>公共课</td>
+		</tr>
+		
+		<tr>
+			<td>27</td>
+			<td>2023-2024-2</td>
+			<td align="left">21301021</td>
+			<td align="left">大学体育（二）</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=202320242006434&zcj=89',700,500)">89</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				87
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					95
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>1</td>
+			<td>正常考试</td>
+			<td>32</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td>3.9</td>
+				     
+				 
+			
+			
+			<td>考试</td>
+			<td>必修</td>
+			<td>公共课</td>
+		</tr>
+		
+		<tr>
+			<td>28</td>
+			<td>2023-2024-2</td>
+			<td align="left">21604010</td>
+			<td align="left">中国近现代史纲要</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=202320242001712&zcj=87',700,500)">87</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				93
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					91.66
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			81
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>3</td>
+			<td>正常考试</td>
+			<td>48</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td>3.7</td>
+				     
+				 
+			
+			
+			<td>考试</td>
+			<td>必修</td>
+			<td>公共课</td>
+		</tr>
+		
+		<tr>
+			<td>29</td>
+			<td>2024-2025-1</td>
+			<td align="left">01021890</td>
+			<td align="left">东方文学史</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=&zcj=通过',700,500)">通过</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>4</td>
+			<td>正常考试</td>
+			<td>60</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td></td>
+				     
+				 
+			
+			
+			<td>考试</td>
+			<td>公选</td>
+			<td>公共选修课</td>
+		</tr>
+		
+		<tr>
+			<td>30</td>
+			<td>2024-2025-1</td>
+			<td align="left">01021920</td>
+			<td align="left">书法鉴赏</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=&zcj=通过',700,500)">通过</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>4</td>
+			<td>正常考试</td>
+			<td>43</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td></td>
+				     
+				 
+			
+			
+			<td>考试</td>
+			<td>公选</td>
+			<td>公共选修课</td>
+		</tr>
+		
+		<tr>
+			<td>31</td>
+			<td>2024-2025-1</td>
+			<td align="left">01025040</td>
+			<td align="left">宏观经济学</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=&zcj=通过',700,500)">通过</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>4</td>
+			<td>正常考试</td>
+			<td>43</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td></td>
+				     
+				 
+			
+			
+			<td>考试</td>
+			<td>公选</td>
+			<td>公共选修课</td>
+		</tr>
+		
+		<tr>
+			<td>32</td>
+			<td>2024-2025-1</td>
+			<td align="left">01028990</td>
+			<td align="left">大学国文（下）</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=&zcj=通过',700,500)">通过</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>4</td>
+			<td>正常考试</td>
+			<td>58</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td></td>
+				     
+				 
+			
+			
+			<td>考试</td>
+			<td>公选</td>
+			<td>公共选修课</td>
+		</tr>
+		
+		<tr>
+			<td>33</td>
+			<td>2024-2025-1</td>
+			<td align="left">01030530</td>
+			<td align="left">现代大学与科学</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=&zcj=通过',700,500)">通过</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>4</td>
+			<td>正常考试</td>
+			<td>41</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td></td>
+				     
+				 
+			
+			
+			<td>考试</td>
+			<td>公选</td>
+			<td>公共选修课</td>
+		</tr>
+		
+		<tr>
+			<td>34</td>
+			<td>2024-2025-1</td>
+			<td align="left">01031730</td>
+			<td align="left">大学国文（上）</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=&zcj=通过',700,500)">通过</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>4</td>
+			<td>正常考试</td>
+			<td>45</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td></td>
+				     
+				 
+			
+			
+			<td>考试</td>
+			<td>公选</td>
+			<td>公共选修课</td>
+		</tr>
+		
+		<tr>
+			<td>35</td>
+			<td>2024-2025-1</td>
+			<td align="left">20307030</td>
+			<td align="left">病原生物学</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=202420251005980&zcj=69',700,500)">69</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					93.5
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" color:red;">
+			58
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>3</td>
+			<td>正常考试</td>
+			<td>48</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td>1.9</td>
+				     
+				 
+			
+			
+			<td>考试</td>
+			<td>必修</td>
+			<td>公共课</td>
+		</tr>
+		
+		<tr>
+			<td>36</td>
+			<td>2024-2025-1</td>
+			<td align="left">20311121</td>
+			<td align="left">神经生物学</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=202420251007850&zcj=86',700,500)">86</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					100
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			80
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>1</td>
+			<td>正常考试</td>
+			<td>16</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td></td>
+				     
+				 
+			
+			
+			<td>考查</td>
+			<td>选修</td>
+			<td>公共选修课</td>
+		</tr>
+		
+		<tr>
+			<td>37</td>
+			<td>2024-2025-1</td>
+			<td align="left">20323040</td>
+			<td align="left">机能实验学</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=202420251005936&zcj=88',700,500)">88</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				93
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					87.69
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			85
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>1.5</td>
+			<td>正常考试</td>
+			<td>48</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td>3.8</td>
+				     
+				 
+			
+			
+			<td>考试</td>
+			<td>必修</td>
+			<td>公共课</td>
+		</tr>
+		
+		<tr>
+			<td>38</td>
+			<td>2024-2025-1</td>
+			<td align="left">20604020</td>
+			<td align="left">药理学</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=202420251001252&zcj=63',700,500)">63</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					94.2
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" color:red;">
+			50
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>2.5</td>
+			<td>正常考试</td>
+			<td>45</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td>1.3</td>
+				     
+				 
+			
+			
+			<td>考试</td>
+			<td>必修</td>
+			<td>专业基础课</td>
+		</tr>
+		
+		<tr>
+			<td>39</td>
+			<td>2024-2025-1</td>
+			<td align="left">20708041</td>
+			<td align="left">卫生事业管理学</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=202420251007429&zcj=83',700,500)">83</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					74
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			87
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>1</td>
+			<td>正常考试</td>
+			<td>16</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td></td>
+				     
+				 
+			
+			
+			<td>考查</td>
+			<td>选修</td>
+			<td>公共选修课</td>
+		</tr>
+		
+		<tr>
+			<td>40</td>
+			<td>2024-2025-1</td>
+			<td align="left">21001030</td>
+			<td align="left">大学英语（三）</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=202420251004727&zcj=78',700,500)">78</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					93.53
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			71
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>4.5</td>
+			<td>正常考试</td>
+			<td>72</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td>2.8</td>
+				     
+				 
+			
+			
+			<td>考试</td>
+			<td>必修</td>
+			<td>公共课</td>
+		</tr>
+		
+		<tr>
+			<td>41</td>
+			<td>2024-2025-1</td>
+			<td align="left">21301031</td>
+			<td align="left">大学体育（三）</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=202420251004893&zcj=87',700,500)">87</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				82
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					100
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>1</td>
+			<td>正常考试</td>
+			<td>32</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td>3.7</td>
+				     
+				 
+			
+			
+			<td>考试</td>
+			<td>必修</td>
+			<td>公共课</td>
+		</tr>
+		
+		<tr>
+			<td>42</td>
+			<td>2024-2025-1</td>
+			<td align="left">21601010</td>
+			<td align="left">马克思主义基本原理</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=202420251005470&zcj=85',700,500)">85</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				92
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					96
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			76
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>3</td>
+			<td>正常考试</td>
+			<td>48</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td>3.5</td>
+				     
+				 
+			
+			
+			<td>考试</td>
+			<td>必修</td>
+			<td>公共基础课</td>
+		</tr>
+		
+		<tr>
+			<td>43</td>
+			<td>2024-2025-2</td>
+			<td align="left">20202020</td>
+			<td align="left">健康评估</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=202420252003701&zcj=80',700,500)">80</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					90
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			74
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>4.5</td>
+			<td>正常考试</td>
+			<td>81</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td>3</td>
+				     
+				 
+			
+			
+			<td>考试</td>
+			<td>必修</td>
+			<td>专业课</td>
+		</tr>
+		
+		<tr>
+			<td>44</td>
+			<td>2024-2025-2</td>
+			<td align="left">20204010</td>
+			<td align="left">护理管理学</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=202420252003685&zcj=72',700,500)">72</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					87
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			62
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>1.5</td>
+			<td>正常考试</td>
+			<td>24</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td>2.2</td>
+				     
+				 
+			
+			
+			<td>考查</td>
+			<td>必修</td>
+			<td>专业课</td>
+		</tr>
+		
+		<tr>
+			<td>45</td>
+			<td>2024-2025-2</td>
+			<td align="left">20204040</td>
+			<td align="left">护理心理学</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=202420252003693&zcj=72',700,500)">72</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					89
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			60
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>1.5</td>
+			<td>正常考试</td>
+			<td>24</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td>2.2</td>
+				     
+				 
+			
+			
+			<td>考查</td>
+			<td>必修</td>
+			<td>专业课</td>
+		</tr>
+		
+		<tr>
+			<td>46</td>
+			<td>2024-2025-2</td>
+			<td align="left">20205051</td>
+			<td align="left">围生期保健</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=202420252000217&zcj=87',700,500)">87</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					87.77
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			86.5
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>1</td>
+			<td>正常考试</td>
+			<td>16</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td>3.7</td>
+				     
+				 
+			
+			
+			<td>考查</td>
+			<td>选修</td>
+			<td>专业选修课</td>
+		</tr>
+		
+		<tr>
+			<td>47</td>
+			<td>2024-2025-2</td>
+			<td align="left">21901041</td>
+			<td align="left">创新创业教育</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=202420252003653&zcj=78',700,500)">78</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					79
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			78
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>2</td>
+			<td>正常考试</td>
+			<td>32</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td>2.8</td>
+				     
+				 
+			
+			
+			<td>考查</td>
+			<td>必修</td>
+			<td>公共课</td>
+		</tr>
+		
+		<tr>
+			<td>48</td>
+			<td>2024-2025-2</td>
+			<td align="left">B21602020</td>
+			<td align="left">毛泽东思想和中国特色社会主义理论体系概论</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=202420252003669&zcj=84',700,500)">84</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				89.8
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					93
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			76
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>3</td>
+			<td>正常考试</td>
+			<td>48</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td>3.4</td>
+				     
+				 
+			
+			
+			<td>考试</td>
+			<td>必修</td>
+			<td>公共课</td>
+		</tr>
+		
+		<tr>
+			<td>49</td>
+			<td>2024-2025-2</td>
+			<td align="left">B21607010</td>
+			<td align="left">习近平新时代中国特色社会主义思想概论</td>
+			<!-- 控制成绩显示 -->
+			
+				  
+				     
+				    
+			<td style=" "><a href="javascript:openWindow('/jsxsd/kscj/pscj_list.do?xs0101id=12023050204013&jx0404id=202420252003661&zcj=79',700,500)">79</a></td></td>
+				     
+				 
+			
+			<!-- 技能成绩 -->
+			
+				  
+				     
+				 
+				
+				<td style=" ">
+				82.4
+				</td></td>
+				
+				     
+				 
+			
+			<!-- 平时成绩 -->
+			
+				  
+				     
+				    
+				
+					<td style=" ">
+					97.3
+					</td></td>
+				
+				     
+				 
+			
+			<!-- 卷面成绩 -->
+			
+				  
+				     
+				    
+				   
+			<td style=" ">
+			67
+			</td></td>
+			
+				     
+				 
+			
+			
+			
+			<td></td>
+			<td>3</td>
+			<td>正常考试</td>
+			<td>48</td>
+			<!-- 控制绩点显示 -->
+			
+				  
+				     
+				    
+			<td>2.9</td>
+				     
+				 
+			
+			
+			<td>考试</td>
+			<td>必修</td>
+			<td>公共课</td>
+		</tr>
+		
+		
+	</table>
+</div>
+<br />
+<!-- 
+<div id="Footer1_divCopyright" class="Nsb_pw" style="display:;">
+  <div class="Nsb_rights">Copyright (C) 湖南强智科技发展有限公司  All Rights Reserved 湘ICP 备12010071号</div>
+</div> -->
+<script language="javascript">
+
+//合并学年学期列
+//jQuery("#dataList").rowspan(1);
+</script>
+<script language="javascript">
+loadjs();
+function loadjs(){
+if( ''!=''){
+alert('');
+}
+}
+</script>
+</body>
+</html>
