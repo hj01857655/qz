@@ -1,7 +1,14 @@
 # import json
-from mysql import mysql_insert,mysql_search
-from hashlib import md5
 import redis
+import sys
+from hashlib import md5
+from pathlib import Path
+
+# 添加项目根目录到Python路径
+project_root = Path(__file__).parent.parent
+sys.path.insert(0, str(project_root))
+
+from database.mysql import mysql_insert, mysql_search
 
 
 def connect_redis(host, port, db):

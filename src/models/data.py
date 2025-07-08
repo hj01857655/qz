@@ -1,8 +1,15 @@
-from curriculum import curriculum
-from achievement import achievement
-from sql import updata
+import sys
 from hashlib import md5
-from login import getname
+from pathlib import Path
+
+# 添加项目根目录到Python路径
+project_root = Path(__file__).parent.parent.parent
+sys.path.insert(0, str(project_root))
+
+from src.academic.curriculum import curriculum
+from src.academic.achievement import achievement
+from src.auth.login import getname
+from database.sql import updata
 
 def data(username,password,school):
     try:
@@ -19,7 +26,7 @@ def data(username,password,school):
         }
         print(f'hash_ID:{ obj["hash_ID"]}  hash_username:{ obj["hash_username"]}')
         updata(obj)
-    except:
+    except:  # noqa: E722
         try:
             # data = search(username, password, 'CSMU','data')
             return {

@@ -1,0 +1,25 @@
+{
+    "mysql": {
+        "host": "localhost",
+        "port": 3306,
+        "user": "your_username",
+        "password": "your_password",
+        "database": "educational_system"
+    },
+    "redis": {
+        "host": "127.0.0.1",
+        "port": 6379,
+        "db": 0
+    },
+    "educational_system": {
+        "base_url": "http://oa.csmu.edu.cn:8099",
+        "login_url": "http://oa.csmu.edu.cn:8099/jsxsd/xk/LoginToXk",
+        "achievement_url": "http://oa.csmu.edu.cn:8099/jsxsd/kscj/cjcx_list",
+        "curriculum_url": "http://oa.csmu.edu.cn:8099/jsxsd/xskb/xskb_list.do"
+    },
+    "logging": {
+        "level": "INFO",
+        "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+        "file": "logs/app.log"
+    }
+}

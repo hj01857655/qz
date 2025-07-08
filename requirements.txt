@@ -1,0 +1,35 @@
+# HTTP请求和网络通信
+requests>=2.31.0
+
+# 网页解析
+beautifulsoup4>=4.12.0
+
+# 数据库连接
+pymysql>=1.1.0
+redis>=4.6.0
+sqlalchemy>=2.0.0
+
+# 数据处理
+pandas>=2.0.0
+
+# OCR和图像处理
+pytesseract>=0.3.10
+Pillow>=10.0.0
+ddddocr>=1.0.6
+
+# 浏览器自动化（可选）
+selenium>=4.15.0
+
+# GUI自动化（可选）
+pyautogui>=0.9.54
+
+# 类型检查（开发依赖）
+mypy>=1.5.0
+
+# 代码格式化（开发依赖）
+black>=23.0.0
+isort>=5.12.0
+
+# 测试框架（开发依赖）
+pytest>=7.4.0
+pytest-cov>=4.1.0

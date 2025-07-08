@@ -1,15 +1,21 @@
 import re, json
 import requests
-from login import isValid
+import sys
 from bs4 import BeautifulSoup
+from pathlib import Path
+
+# 添加项目根目录到Python路径
+project_root = Path(__file__).parent.parent.parent
+sys.path.insert(0, str(project_root))
+
+from src.auth.login import isValid
 
 
 def curriculum():
     try:
-        res = requests.get(
-            'http://oa.csmu.edu.cn:8099/jsxsd/xskb/xskb_list.do',
-            cookies=isValid().cookies).text
-        # print(res)
+        session = isValid()
+        res = session.get('http://oa.csmu.edu.cn:8099/jsxsd/xskb/xskb_list.do').text
+        print(res)
         # a, _ = re.subn('\r', '', res)
         # a, _ = re.subn('\n', '', a)
         # a, _ = re.subn('\t', '', a)
@@ -18,13 +24,12 @@ def curriculum():
         # print(tr)
 
         weekday = {
-            '1': 'A003207A6624498F836BB24D19DD5A74',
-            '2': 'A41B88AACE3649DEA0617C2B322A07A2',
-            '3': 'E2ED1FEC1EDF48D3832EC07E45270721',
-            '4': 'B674074118214BDDA88D9DACD9075C46',
-            '5': '16FC051CF913479B9D3DBB1C1EBE4C9D',
-            "6": '8CEDF435CAD644F3B7D2AF32B80F52D2',
-            "7": 'A003207A6624498F836BB24D19DD5A74'
+            'A003207A6624498F836BB24D19DD5A74': '12',
+            'A41B88AACE3649DEA0617C2B322A07A2': '34',
+            'E2ED1FEC1EDF48D3832EC07E45270721': '56',
+            'B674074118214BDDA88D9DACD9075C46': '78',
+            '16FC051CF913479B9D3DBB1C1EBE4C9D': '910',
+            '8CEDF435CAD644F3B7D2AF32B80F52D2': '1112'
         }
         
         # print(weekday)
@@ -117,12 +122,21 @@ def curriculum():
         print(e)
         return []
 
-
+'''
+获取课程表
+arr: 课程表数据
+day: 星期几
+all: 课程表数据
+'''
 def get(arr, day, all):
     week = arr[2].split('(周)')[0]
-    a = re.findall('(\d+)-(\d+)', week)
+
+
+    # a = re.findall('(\d+)-(\d+)', week)
+    a = re.findall(r'(\d+)-(\d+)', week)
     b = week.split(',')
-    c = re.findall('(\d{2})', arr[2].split('(周)')[1])
+    # c = re.findall('(\d{2})', arr[2].split('(周)')[1])
+    c = re.findall(r'(\d{2})', arr[2].split('(周)')[1])
     # print(''.join(c))
     if len(a) > 0:
         m = a[0]
@@ -163,8 +177,13 @@ def get(arr, day, all):
     #     json.dump(all, f, ensure_ascii=False, indent=4)
 
 
+'''
+判断课程表数据是否为4个或5个
+arr: 课程表数据
+'''
 def isarr(arr):
     if len(arr) == 4:
+
         if '(' in arr[1]:
             arr[0] = arr[0] + arr[1]
             arr[1] = arr[2]
@@ -179,3 +198,7 @@ def isarr(arr):
             arr[3] = arr[4]
             arr.pop()
             print(arr)
+
+
+if __name__ == "__main__":
+    curriculum()
