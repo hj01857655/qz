@@ -67,10 +67,16 @@ config/config.json
 **/*password*
 **/*secret*
 **/*key*
-**/.*env*
+
+# 环境变量文件 (保留模板文件)
 .env
 .env.local
 .env.*.local
+.env.development
+.env.production
+.env.test
+**/.*env*
+!.env.example
 
 # 验证码图片
 CSMU_code*.png

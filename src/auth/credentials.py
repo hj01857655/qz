@@ -26,6 +26,9 @@ from typing import Optional, Tuple, Dict, Any
 project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
 
+# 导入环境变量加载器
+from src.utils.env_loader import env_loader
+
 
 class CredentialsManager:
     """安全凭据管理器"""
@@ -33,6 +36,8 @@ class CredentialsManager:
     def __init__(self):
         self.project_root = project_root
         self._cached_credentials = {}
+        # 尝试加载 .env 文件
+        env_loader.load_env()
     
     def get_credentials(self, force_input: bool = False) -> Tuple[Optional[str], Optional[str], Optional[str]]:
         """
@@ -52,13 +57,11 @@ class CredentialsManager:
         if force_input:
             return self._get_interactive_credentials()
         
-        # 1. 尝试从环境变量获取
-        username = os.getenv('EDU_USERNAME')
-        password = os.getenv('EDU_PASSWORD') 
-        school = os.getenv('EDU_SCHOOL', '10')  # 默认学校代码
-        
+        # 1. 尝试从环境变量获取（包括 .env 文件）
+        username, password, school = env_loader.get_credentials()
+
         if username and password:
-            print("✓ 从环境变量获取凭据")
+            print("✓ 从环境变量/.env文件获取凭据")
             return username, password, school
         
         # 2. 尝试从配置文件获取
