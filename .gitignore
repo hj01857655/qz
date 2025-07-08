@@ -46,7 +46,7 @@ venv.bak/
 ehthumbs.db
 Thumbs.db
 
-# Project specific
+# Project specific - 敏感信息
 cookies.json
 *.log
 logs/
@@ -60,6 +60,26 @@ data/*.html
 
 # Configuration (keep template, ignore actual config)
 config/config.json
+
+# 敏感信息和凭据
+**/credentials.json
+**/secrets.json
+**/*password*
+**/*secret*
+**/*key*
+**/.*env*
+.env
+.env.local
+.env.*.local
+
+# 验证码图片
+CSMU_code*.png
+*_code*.png
+
+# 个人信息文件
+name.json
+user_info.json
+personal_data.json
 
 # Temporary files
 *.tmp
