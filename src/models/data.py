@@ -9,7 +9,7 @@ sys.path.insert(0, str(project_root))
 from src.academic.curriculum import curriculum
 from src.academic.achievement import achievement
 from src.auth.login import getname
-from database.sql import updata
+from database.sql import update
 
 def data(username,password,school):
     try:
@@ -25,7 +25,7 @@ def data(username,password,school):
             "other": '',
         }
         print(f'hash_ID:{ obj["hash_ID"]}  hash_username:{ obj["hash_username"]}')
-        updata(obj)
+        update(obj)
     except:  # noqa: E722
         try:
             # data = search(username, password, 'CSMU','data')

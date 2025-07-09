@@ -15,21 +15,23 @@ def search(obj: dict):
     except Exception as e:
         print(f'search:{e}')
 
-def updata(obj: dict):
+def update(obj: dict):
+    """更新数据到数据库和Redis"""
     try:
-        updataparams = search(obj)
-        # print(f'mysql updata params:{updataparams}')
-        # print(f'mysql updata params:{updataparams}')
-        if 'code' in updataparams and updataparams['code'] == 404:
-            #数据库没有，就插入到数据库和redis
-            print(f'returnData:{updataparams['msg']}->mysql.insert')
-            
-        elif 'code' in updataparams and updataparams['code'] == 201:
-            #账号密码错误
-            print(f'returnData:{updataparams["msg"]}')
-        elif 'code' in updataparams and updataparams['code'] == 200:
-            #数据库有，就更新到数据库和redis
-            mysql.mysql_updata(obj)
+        update_params = search(obj)
+
+        if 'code' in update_params and update_params['code'] == 404:
+            # 数据库没有，就插入到数据库和redis
+            print(f'returnData:{update_params["msg"]}->mysql.insert')
+
+        elif 'code' in update_params and update_params['code'] == 201:
+            # 账号密码错误
+            print(f'returnData:{update_params["msg"]}')
+        elif 'code' in update_params and update_params['code'] == 200:
+            # 数据库有，就更新到数据库和redis
+            mysql.mysql_update(obj)
             redis_insert(obj)
     except Exception as e:
-        print(f'updata:{e}')
+        print(f'update:{e}')
+
+# 兼容性代码已移除，请直接使用 update() 函数

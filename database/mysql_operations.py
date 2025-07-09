@@ -1,60 +1,97 @@
-from db_config import get_db_connection
+from .db_config import get_db_connection
 import pymysql
 import json
 
 def insert_user(username, password, remember_me=False):
+    """插入用户，如果数据库不可用则跳过"""
     conn = get_db_connection()
-    cursor = conn.cursor()
+    if not conn:
+        print("数据库不可用，跳过用户插入操作")
+        return False
 
     try:
+        cursor = conn.cursor()
         cursor.execute('''
             INSERT INTO users (username, password, remember_me) VALUES (%s, %s, %s)
         ''', (username, password, remember_me))
         conn.commit()
         print("用户已添加。")
+        return True
     except pymysql.IntegrityError:
         print("用户名已存在。")
+        return False
+    except Exception as e:
+        print(f"插入用户失败: {e}")
+        return False
     finally:
-        cursor.close()
-        conn.close()
+        if conn:
+            cursor.close()
+            conn.close()
 
 def get_user(username):
+    """获取用户信息，如果数据库不可用返回None"""
     conn = get_db_connection()
-    cursor = conn.cursor()
-
-    cursor.execute('''
-        SELECT * FROM users WHERE username = %s
-    ''', (username,))
-    user = cursor.fetchone()
-    cursor.close()
-    conn.close()
-    return user
-
-def update_user_password(username, password, remember_me):
-    conn = get_db_connection()
-    cursor = conn.cursor()
+    if not conn:
+        return None
 
     try:
+        cursor = conn.cursor()
+        cursor.execute('''
+            SELECT * FROM users WHERE username = %s
+        ''', (username,))
+        user = cursor.fetchone()
+        cursor.close()
+        conn.close()
+        return user
+    except Exception as e:
+        print(f"获取用户信息失败: {e}")
+        if conn:
+            conn.close()
+        return None
+
+def update_user_password(username, password, remember_me):
+    """更新用户密码，如果数据库不可用则跳过"""
+    conn = get_db_connection()
+    if not conn:
+        print("数据库不可用，跳过密码更新操作")
+        return False
+
+    try:
+        cursor = conn.cursor()
         cursor.execute('''
             UPDATE users SET password = %s, remember_me = %s WHERE username = %s
         ''', (password, remember_me, username))
         conn.commit()
         print("用户密码已更新。")
+        return True
+    except Exception as e:
+        print(f"更新用户密码失败: {e}")
+        return False
     finally:
-        cursor.close()
-        conn.close()
+        if conn:
+            cursor.close()
+            conn.close()
 
 def get_remembered_user():
+    """获取记住的用户，如果数据库不可用返回None"""
     conn = get_db_connection()
-    cursor = conn.cursor()
+    if not conn:
+        return None
 
-    cursor.execute('''
-        SELECT * FROM users WHERE remember_me = TRUE
-    ''')
-    user = cursor.fetchone()
-    cursor.close()
-    conn.close()
-    return user
+    try:
+        cursor = conn.cursor()
+        cursor.execute('''
+            SELECT * FROM users WHERE remember_me = TRUE
+        ''')
+        user = cursor.fetchone()
+        cursor.close()
+        conn.close()
+        return user
+    except Exception as e:
+        print(f"获取记住的用户失败: {e}")
+        if conn:
+            conn.close()
+        return None
 
 def insert_or_update_class_data_from_json(json_file):
     # 读取JSON文件

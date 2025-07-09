@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
 
-from src.auth.login import isValid
+from src.auth.session_manager import get_session, ensure_logged_in
 
 
 class AchievementParser:
@@ -76,7 +76,6 @@ class AchievementParser:
                     "kcsx": get_cell_text(cells[14]),     # 课程属性
                     "kcxz": get_cell_text(cells[15]),     # 课程性质
                 }
-                print(achievement)
 
 
 
@@ -113,15 +112,17 @@ class AchievementParser:
     def fetch_achievements(self) -> List[Dict[str, Any]]:
         """获取成绩数据"""
         try:
+            # 确保已登录
+            if not ensure_logged_in():
+                print("❌ 登录失败，无法获取成绩数据")
+                return []
+
             # 准备请求数据
             data = {"kksj": "", "kcxz": "", "kcmc": "", "xsfs": "max"}
 
-            # 发送请求
-            response = requests.post(
-                self.base_url,
-                data=data,
-                cookies=isValid().cookies
-            )
+            # 使用全局session发送请求
+            session = get_session()
+            response = session.post(self.base_url, data=data, timeout=30)
             response.raise_for_status()
 
 

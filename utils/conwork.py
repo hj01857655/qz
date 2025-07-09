@@ -1,3 +1,9 @@
+import hashlib
+
+def md5_encode(text: str) -> str:
+    """MD5编码函数"""
+    return hashlib.md5(text.encode('utf-8')).hexdigest()
+
 def encodeInp(message):
     keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/="
     output = ''

@@ -1,7 +1,4 @@
-import os
-import json
 import sys
-from hashlib import md5
 from pathlib import Path
 from sqlalchemy import create_engine, Column, String, Text, Integer
 from sqlalchemy.orm import sessionmaker, declarative_base
@@ -11,26 +8,12 @@ import time
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
-def load_config():
-    """加载数据库配置"""
-    config_path = project_root / "config" / "config.json"
-    if config_path.exists():
-        with open(config_path, 'r', encoding='utf-8') as f:
-            return json.load(f)
-    else:
-        # 使用环境变量作为备选
-        return {
-            "mysql": {
-                "host": os.getenv("DB_HOST", "localhost"),
-                "port": int(os.getenv("DB_PORT", "3306")),
-                "user": os.getenv("DB_USER", "root"),
-                "password": os.getenv("DB_PASSWORD", ""),
-                "database": os.getenv("DB_NAME", "educational_system")
-            }
-        }
+# 配置加载功能已移至 db_config.py，避免重复代码
 
 def get_database_uri():
     """获取数据库连接URI"""
+    from .db_config import load_config
+
     config = load_config()
     mysql_config = config["mysql"]
 
@@ -117,7 +100,8 @@ def mysql_search(obj: dict):
         return {"msg": "Mysql有问题", "code": 500, "error": str(e)}
 
 
-def mysql_updata(obj: dict):
+def mysql_update(obj: dict):
+    """更新MySQL数据库中的用户信息"""
     hash_username = obj['hash_username']
     session = DBsession()
     session.query(Person).filter_by(

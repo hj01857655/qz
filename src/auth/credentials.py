@@ -101,5 +101,8 @@ def clear_credentials() -> None:
 if __name__ == "__main__":
     # 测试凭据管理器
     print("🔐 凭据管理器测试")
-    username, password, school = get_login_credentials(force_input=True)
-    print(f"获取到凭据: 用户名={username}, 学校={school}")
+    username, password, school = get_login_credentials()
+    if username and password:
+        print(f"✅ 获取到凭据: 用户名={username}, 学校={school}")
+    else:
+        print("❌ 未获取到凭据")
